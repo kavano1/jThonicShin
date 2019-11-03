@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>game 1</title>
+        <style media="screen">
+            canvas {
+                border: 1px black solid;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="id-canvas" width="400" height="300"></canvas>
+<script>
+var log = console.log.bind(console)
+
+var drawBoard = function() {
+    for(let i=0; i<board.length; i++) {
+        let row = board[i]
+        log(row.join(' '))
+    }
+ }
+
+var step = function(x, y, ball) {
+    board[x][y] = ball
+    drawBoard()
+    var pos={x,y}
+    checkBoard(board,pos,ball)
+}
+
+var checkBoard = function(board,pos,ball) {
+
+    var x = pos.x
+    var y = pos.y
+
+
+    var l=0
+    var width = board[0].length
+    var left = 0
+    var right = 0
+    var up = 0
+    var down = 0
+    var leftUp = 0
+    var rightDown = 0
+    var rightUp = 0
+    var leftDown = 0
+
+
+
+    for(let j=y+1; j<width; j++){
+        if(board[x][j] === ball){
+            right+=1
+        }else{
+            break
+            }
+
+        }
+
+    for(let i=y-1;i>=0;i--){
+        if(board[x][i] === ball){
+            left+=1
+        }else{
+            break
+        }
+    }
+     log(left,right)
+
+
+
+    log(left, right, left+right+1)
+
+    for(let i=x+1;i<width;i++){
+        if(board[i][y] === ball){
+            down += 1
+        }else{
+            break
+        }
+    }
+
+    for(let j=x-1;j>=0;j--){
+        if(board[j][y] === ball){
+            up += 1
+        }else{
+            break
+        }
+    }
+    log(up, down)
+
+    for(let i=x+1,j=y+1;i<width,j<width;i++,j++){
+        if(board[i][j] === ball){
+            rightDown += 1
+        }else {
+            break
+        }
+    }
+
+    for(let i=x-1,j=y-1;i>=0,j>=0;i--,j--){
+        if(board[i][j] === ball){
+            leftUp += 1
+        }else {
+            break
+        }
+    }
+    log(leftUp, rightDown)
+    //
+    // for(let i=x+1,j=y-1;i<width,j>=0;i++,j--){
+    //     if(board[i][j] === ball){
+    //         leftDown += 1
+    //     }else {
+    //         break
+    //     }
+    // }
+    //
+    // for(let i=x-1,j=y+1;i>=0,j<width;i--,j++){
+    //     if(board[i][j] === ball){
+    //         rightUp += 1
+    //     }else {
+    //         break
+    //     }
+    // }
+    // log(leftDown, rightUp)
+
+}
+
+let board = new Array()
+for(let i=0; i<6; i++) {
+    board[i] = new Array(i)
+    for(let j=0; j<6; j++) {
+        board[i][j] = '.'
+    }
+}
+
+
+var __main = function() {
+}
+
+__main()
+</script>
+    </body>
+</html>
