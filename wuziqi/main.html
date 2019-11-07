@@ -6,13 +6,27 @@
         <style media="screen">
             canvas {
                 border: 1px black solid;
+                background: #d0a64f;
+            }
+
+            #id-container {
+                width: 700px;
+                height: 700px;
+                margin: 0 auto;
             }
         </style>
         <script src='core.js'></script>
         <script src='utils.js'></script>
+        <script src="fallingP.js"></script>
     </head>
     <body>
-        <canvas id="id-canvas" width="400" height="300"></canvas>
+        <div id = id-container>
+            <canvas id="id-canvas" width="700" height="700">
+            </canvas>
+        </div>
+
+        <img id = 'id-white' src="white.png" alt="">
+        <img id = 'id-black' src="black.png" alt="">
 <script>
 
 const board = new Array()
@@ -26,8 +40,9 @@ for(let i=0; i < 6; i++) {
 var __main = function() {
      const enableDebug = false
      debugMode(enableDebug)
+     drawCheckerboard()
+     fallingPiece()
 
-     
 }
 
 __main()
